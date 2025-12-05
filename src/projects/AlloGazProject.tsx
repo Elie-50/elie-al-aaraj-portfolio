@@ -61,17 +61,6 @@ const AlloGaz: React.FC = () => {
           start: "top 65%",
         },
       });
-
-      // Demo button
-      gsap.from(".project-link", {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 60%",
-        },
-      });
     }, cardRef);
 
     return () => ctx.revert();
