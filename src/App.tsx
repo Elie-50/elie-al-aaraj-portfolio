@@ -8,7 +8,7 @@ import AboutProjects from "./pages/AboutProjects";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename='/elie-al-aaraj-portfolio'>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
