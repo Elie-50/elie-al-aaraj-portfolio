@@ -12,7 +12,8 @@ const AlloGaz: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const ctx = gsap.context(() => {
+    const ctx = gsap.context((self) => {
+
       // Card animation
       gsap.from(cardRef.current, {
         opacity: 0,
@@ -22,44 +23,51 @@ const AlloGaz: React.FC = () => {
         scrollTrigger: {
           trigger: cardRef.current,
           start: "top 85%",
-        },
+        }
       });
-
+      
       // Tech badges
-      gsap.from(".tech-badge", {
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 80%",
-        },
+      self.selector!(".tech-badge").forEach((el: HTMLElement, index: number) => {
+        gsap.from(el, {
+          opacity: 0,
+          // y: 20,
+          x: -50,
+          duration: 0.6,
+          ease: "power3.out",
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+          },
+        });
       });
 
-      // Feature list
-      gsap.from(".project-feature", {
-        opacity: 0,
-        x: -40,
-        stagger: 0.15,
-        duration: 0.7,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 70%",
-        },
+      // Features
+      self.selector!(".project-feature").forEach((el: HTMLElement) => {
+        gsap.from(el, {
+          opacity: 0,
+          x: -40,
+          duration: 0.7,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+          },
+        });
       });
 
-      // Screenshots
-      gsap.from(".project-image", {
-        opacity: 0,
-        scale: 0.9,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 65%",
-        },
+      // Images
+      self.selector!(".project-image").forEach((el: HTMLElement, index: number) => {
+        gsap.from(el, {
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.8,
+          delay: index * 0.3,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 75%",
+          },
+        });
       });
     }, cardRef);
 
