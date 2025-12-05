@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
               See My Work
             </a>
             <a
-              href="/resume/Elie Al Aaraj CV.pdf"
+              href="/elie-al-aaraj-portfolio/resume/Elie Al Aaraj CV.pdf"
               download="Elie Al Aaraj CV.pdf"
               className="hero-cta border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-indigo-600 transition"
             >

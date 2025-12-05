@@ -8,10 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server: {
-    host: true,
-    port: 5173,
-    strictPort: true,
-  },
-  base: '/elie-al-aaraj-portfolio',
+  base: '/elie-al-aaraj-portfolio/',
 })

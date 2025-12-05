@@ -151,13 +151,13 @@ const TeamManagerApp: React.FC = () => {
       {/* Screenshots */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <img
-          src="/images/task_form.png"
+          src="/elie-al-aaraj-portfolio/images/task_form.png"
           alt="Task Form"
           className="project-image rounded-lg shadow-md"
           loading="lazy"
         />
         <img
-          src="/images/task_list.png"
+          src="/elie-al-aaraj-portfolio/images/task_list.png"
           alt="Task Management"
           className="project-image rounded-lg shadow-md"
           loading="lazy"

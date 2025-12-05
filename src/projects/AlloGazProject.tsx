@@ -165,13 +165,13 @@ const AlloGaz: React.FC = () => {
       {/* Screenshots */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <img
-          src="/images/customer_search.png"
+          src="/elie-al-aaraj-portfolio/images/customer_search.png"
           alt="Complex search form"
           className="project-image rounded-lg shadow-md"
           loading="lazy"
         />
         <img
-          src="/images/address_card.png"
+          src="/elie-al-aaraj-portfolio/images/address_card.png"
           alt="Address management page"
           className="project-image rounded-lg shadow-md"
           loading="lazy"
