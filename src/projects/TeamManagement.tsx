@@ -76,7 +76,7 @@ const TeamManagerApp: React.FC = () => {
           duration: 0.5,
           scrollTrigger: {
             trigger: el,
-            start: "top 10%",
+            start: "top 40%",
           },
         });
       });
