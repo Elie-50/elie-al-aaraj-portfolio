@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import { Link } from "react-router-dom";
 
 // Register SplitText plugin
 gsap.registerPlugin(SplitText);
@@ -60,12 +61,12 @@ const Hero: React.FC = () => {
             Building scalable fullstack apps with<br/> TypeScript, Node.js,<br/> and modern web tech.
           </p>
           <div className="flex justify-center md:justify-start gap-4 flex-wrap">
-            <a
-              href="/about-projects"
+            <Link
+              to="/about-projects"
               className="hero-cta bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform"
             >
               See My Work
-            </a>
+            </Link>
             <a
               href="/elie-al-aaraj-portfolio/resume/Elie Al Aaraj CV.pdf"
               download="Elie Al Aaraj CV.pdf"
