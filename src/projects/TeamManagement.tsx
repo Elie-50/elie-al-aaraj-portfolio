@@ -63,7 +63,7 @@ const TeamManagerApp: React.FC = () => {
           ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: el,
-            start: "top 60%",
+            start: "top 80%",
           },
         });
       });
@@ -76,7 +76,7 @@ const TeamManagerApp: React.FC = () => {
           duration: 0.5,
           scrollTrigger: {
             trigger: el,
-            start: "top 40%",
+            start: "top 90%",
           },
         });
       });
