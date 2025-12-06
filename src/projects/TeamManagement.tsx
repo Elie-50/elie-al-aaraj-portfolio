@@ -100,7 +100,7 @@ const TeamManagerApp: React.FC = () => {
         <span className="font-medium">users, organizations, team members, projects</span>, and <span className="font-medium">tasks</span>.  
         Built with a robust backend in <span className="font-medium">NestJS</span>, utilizing TypeORM and JWT authentication for secure user management.  
         The app also includes <span className="font-medium">unit and E2E testing</span> configured through a CI pipeline.  
-        Soon to be dockerized for easy deployment.
+        Docker integration for easy deployment.
       </p>
 
 
