@@ -1,6 +1,7 @@
 import React from "react";
 import AlloGazProject from "../projects/AlloGazProject";
 import TeamManagerApp from "../projects/TeamManagement";
+import MovieBrowser from "../projects/MovieBrowser";
 
 const Projects: React.FC = () => {
 
@@ -15,6 +16,7 @@ const Projects: React.FC = () => {
         </h2>
         <AlloGazProject />
         <TeamManagerApp />
+        <MovieBrowser />
       </div>
     </section>
   );
