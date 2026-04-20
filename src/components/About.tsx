@@ -10,18 +10,22 @@ const About: React.FC = () => {
   useGSAP(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        defaults: { ease: "power3.out", duration: 1.2 },
+        defaults: { ease: "power3.out", duration: 1 },
       });
 
-      // Animate heading
-      tl.from(".about-heading", { y: 40, opacity: 0 }, "-=0.6");
+      tl.from(".about-heading", { y: 40, opacity: 0 });
 
-      // Animate paragraphs staggered
-      tl.from(".about-text", { y: 30, opacity: 0, stagger: 0.3 }, "-=0.8");
+      tl.from(
+        ".about-text",
+        { y: 30, opacity: 0, stagger: 0.2 },
+        "-=0.6"
+      );
 
-      // Animate education block
-      tl.from(".education-block", { y: 40, opacity: 0 }, "-=0.6");
-
+      tl.from(
+        ".education-block",
+        { y: 40, opacity: 0 },
+        "-=0.6"
+      );
     }, aboutRef);
 
     return () => ctx.revert();
@@ -31,37 +35,50 @@ const About: React.FC = () => {
     <section
       id="about"
       ref={aboutRef}
-      className="w-full py-20 bg-gray-100 px-6"
+      className="relative w-full py-24 px-6 bg-white dark:bg-black overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">
-        {/* About Me (Left) */}
-        <div className="md:w-1/2 text-left">
-          <h2 className="about-heading text-3xl font-bold mb-6 text-indigo-600">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full top-1/3 left-1/2 -translate-x-1/2"></div>
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
+        
+        {/* About Me */}
+        <div className="md:w-1/2">
+          <h2 className="about-heading text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
             About Me
           </h2>
-          <p className="about-text text-gray-700 mb-4 leading-relaxed">
-            Hi, I'm <span className="font-semibold">Elie</span>, a fullstack developer specializing in TypeScript, Node.js, React, and NestJS.
+
+          <p className="about-text text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+            Hi, I'm <span className="font-medium text-gray-900 dark:text-white">Elie</span>, a fullstack developer specializing in TypeScript, Node.js, React, and NestJS.
           </p>
-          <p className="about-text text-gray-700 mb-4 leading-relaxed">
-            I build scalable applications with SQL and NoSQL databases and design efficient REST and GraphQL APIs.
+
+          <p className="about-text text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+            I build scalable applications using SQL and NoSQL databases and design efficient REST and GraphQL APIs.
           </p>
-          <p className="about-text text-gray-700 leading-relaxed">
-            My focus is on clean, maintainable code, intuitive interfaces, and turning ideas into impactful digital products.  
+
+          <p className="about-text text-gray-600 dark:text-gray-400 leading-relaxed">
+            My focus is on clean, maintainable code, intuitive interfaces, and turning ideas into impactful digital products.
           </p>
         </div>
 
-        {/* Education (Right) */}
-        <div className="md:w-1/2 text-left education-block">
-          <h3 className="text-2xl font-semibold text-indigo-600 mb-3">
-            Education & Background
-          </h3>
-          <p className="text-gray-700 leading-relaxed">
-            I hold a <span className="font-medium">bachelor's degree</span> in{" "}
-            <span className="font-medium">Computer Science</span> from{" "}
-            <span className="font-medium">The Lebanese University</span>. <br /> During my studies, I developed a strong foundation in
-            Software Engineering, Database Management, and Web Development
-            which continues to guide my approach to building modern applications.
-          </p>
+        {/* Education */}
+        <div className="md:w-1/2 education-block">
+          <div className="p-6 rounded-2xl backdrop-blur-xl bg-white/40 dark:bg-black/40 border border-gray-200/40 dark:border-white/10">
+            
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+              Education & Background
+            </h3>
+
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              I hold a <span className="font-medium text-gray-900 dark:text-white">bachelor's degree</span> in{" "}
+              <span className="font-medium text-gray-900 dark:text-white">Computer Science</span> from{" "}
+              <span className="font-medium text-gray-900 dark:text-white">The Lebanese University</span>.
+              <br /><br />
+              During my studies, I built a strong foundation in Software Engineering, Database Management, and Web Development—principles that continue to guide how I build modern applications.
+            </p>
+
+          </div>
         </div>
       </div>
     </section>

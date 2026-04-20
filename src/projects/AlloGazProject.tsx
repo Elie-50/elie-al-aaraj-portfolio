@@ -1,6 +1,14 @@
 import React, { useRef } from "react";
 import { FaReact, FaGlobe, FaCloud } from "react-icons/fa";
-import { SiGraphql, SiJsonwebtokens, SiTailwindcss, SiRedux, SiTypescript, SiNestjs, SiPostgresql } from "react-icons/si";
+import {
+	SiGraphql,
+	SiJsonwebtokens,
+	SiTailwindcss,
+	SiRedux,
+	SiTypescript,
+	SiNestjs,
+	SiPostgresql,
+} from "react-icons/si";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -9,173 +17,174 @@ import TechStackIcon from "../components/TechStackIcon";
 gsap.registerPlugin(ScrollTrigger);
 
 const AlloGaz: React.FC = () => {
-  const cardRef = useRef<HTMLDivElement>(null);
+	const cardRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const ctx = gsap.context((self) => {
+	useGSAP(() => {
+		const ctx = gsap.context((self) => {
+			gsap.from(cardRef.current, {
+				opacity: 0,
+				y: 60,
+				duration: 1,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: cardRef.current,
+					start: "top 85%",
+				},
+			});
 
-      // Card animation
-      gsap.from(cardRef.current, {
-        opacity: 0,
-        y: 60,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 85%",
-        }
-      });
-      
-      // Tech badges
-      self.selector!(".tech-badge").forEach((el: HTMLElement, index: number) => {
-        gsap.from(el, {
-          opacity: 0,
-          // y: 20,
-          x: -50,
-          duration: 0.6,
-          ease: "power3.out",
-          delay: index * 0.1,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-          },
-        });
-      });
+			self.selector!(".project-feature").forEach(
+				(el: HTMLElement, i: number) => {
+					gsap.from(el, {
+						opacity: 0,
+						y: 20,
+						duration: 0.6,
+						delay: i * 0.05,
+						ease: "power3.out",
+						scrollTrigger: {
+							trigger: el,
+							start: "top 92%",
+						},
+					});
+				},
+			);
 
-      // Features
-      self.selector!(".project-feature").forEach((el: HTMLElement) => {
-        gsap.from(el, {
-          opacity: 0,
-          x: -40,
-          duration: 0.7,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-          },
-        });
-      });
+			self.selector!(".project-image").forEach((el: HTMLElement, i: number) => {
+				gsap.from(el, {
+					opacity: 0,
+					scale: 0.95,
+					duration: 0.8,
+					delay: i * 0.15,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: el,
+						start: "top 85%",
+					},
+				});
+			});
+		}, cardRef);
 
-      // Images
-      self.selector!(".project-image").forEach((el: HTMLElement, index: number) => {
-        gsap.from(el, {
-          opacity: 0,
-          scale: 0.9,
-          duration: 0.8,
-          delay: index * 0.3,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 75%",
-          },
-        });
-      });
-    }, cardRef);
+		return () => ctx.revert();
+	}, []);
 
-    return () => ctx.revert();
-  }, []);
+	return (
+		<div
+			ref={cardRef}
+			className="
+      group relative rounded-2xl
+      backdrop-blur-xl bg-white/30 dark:bg-black/30
+      border border-gray-200/40 dark:border-white/10
+      p-8 md:p-10 mb-14
 
-  return (
-    <div
-      ref={cardRef}
-      className="project-card bg-gray-50 rounded-xl shadow-lg p-8 mb-12 hover:shadow-2xl transition"
-    >
-      <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-        Allo-Gaz — Customers & Inventory Management System
-      </h3>
+      transition-all duration-300
+      hover:scale-[1.01]
+      hover:border-black/20 dark:hover:border-white/20
+    "
+		>
+			<div className="mb-8">
+				<h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+					Allo-Gaz
+				</h3>
 
-      <p className="text-gray-600 mb-6 leading-relaxed">
-        A professional web platform built for a gas company to manage{" "}
-        <span className="font-medium">customers, addresses, phone numbers, orders, and inventory</span>.  
-        The backend was developed with <span className="font-medium">NestJS</span>, leveraging DI, TypeORM, and JWT authentication.  
-        GraphQL was integrated to handle deeply nested data (customers → addresses → phones, customers → orders → items).  
-        Features include <span className="font-medium">multilingual support (i18n)</span>, <span className="font-medium">light & dark themes</span>, sales/profit reports, and secure storage on <span className="font-medium">Google Cloud Storage (GCS)</span>.
-      </p>
+				<p className="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
+					Fullstack inventory & customer management system with GraphQL-driven
+					relational architecture.
+				</p>
+			</div>
 
-      {/* Tech stack icons */}
-      <div className="flex flex-wrap gap-3 mb-6">
-        <TechStackIcon extraStyles="bg-cyan-100 text-cyan-600">
-          <SiTypescript /> TypeScript
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-red-100 text-red-700">
-          <SiNestjs /> NestJS
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-blue-100 text-blue-700">
-          <SiPostgresql /> PostgreSQL
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-pink-100 text-pink-700">
-          <SiGraphql /> GraphQL
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-red-100 text-red-700">
-          <SiJsonwebtokens /> JWT Auth
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-purple-100 text-purple-700">
-          <FaCloud /> GCS
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-blue-100 text-blue-700">
-          <FaReact /> React
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-cyan-100 text-cyan-700">
-          <SiTailwindcss /> TailwindCSS
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-violet-100 text-violet-700">
-          <SiRedux /> Redux Toolkit
-        </TechStackIcon>
-        <TechStackIcon extraStyles="bg-gray-100 text-gray-700">
-          <FaGlobe /> i18n
-        </TechStackIcon>
-      </div>
+			<div className="flex flex-wrap gap-2 mb-10">
+				<TechStackIcon>
+					<SiTypescript /> TypeScript
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiNestjs /> NestJS
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiPostgresql /> PostgreSQL
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiGraphql /> GraphQL
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiJsonwebtokens /> JWT
+				</TechStackIcon>
+				<TechStackIcon>
+					<FaCloud /> GCS
+				</TechStackIcon>
+				<TechStackIcon>
+					<FaReact /> React
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiTailwindcss /> Tailwind
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiRedux /> Redux
+				</TechStackIcon>
+				<TechStackIcon>
+					<FaGlobe /> i18n
+				</TechStackIcon>
+			</div>
 
-      {/* Key Features */}
-      <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-        <li className="project-feature">
-          <span className="font-medium">Advanced search & filters</span> — Search customers by first name, last name, middle name, phone, or email, with sorting by name or date.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Optimized queries</span> — Debounced search requests and database indexes on filterable fields ensure fast and efficient lookups.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Address management</span> — Nicely formatted pages to display multiple addresses and phone numbers.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Nested data handling</span> — Customers → Addresses → Phones and Customers → Orders → Items.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">State management</span> — Allo-Gaz leverages Redux Toolkit for predictable and efficient state handling across complex components.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Multilingual support</span> — Two language modes with smooth switching.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Light & dark themes</span> — Modern UI with theme toggle.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Sales reports</span> — Automatic yearly sales reports.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Profit analysis</span> — Filter profit between any two selected dates.
-        </li>
-        <li className="project-feature">
-          <span className="font-medium">Secure media storage</span> — Images stored securely on GCS.
-        </li>
-      </ul>
+			<div className="grid md:grid-cols-2 gap-6 mb-10 text-gray-600 dark:text-gray-400">
+				<div className="space-y-2">
+					<p className="text-sm font-medium text-gray-900 dark:text-white">
+						Architecture
+					</p>
+					<p>GraphQL relational modeling (customers, orders, addresses)</p>
+					<p>Optimized database queries with indexing + caching</p>
+				</div>
 
-      {/* Screenshots */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <img
-          src="/elie-al-aaraj-portfolio/images/customer_search.png"
-          alt="Complex search form"
-          className="project-image rounded-lg shadow-md"
-          loading="lazy"
-        />
-        <img
-          src="/elie-al-aaraj-portfolio/images/address_card.png"
-          alt="Address management page"
-          className="project-image rounded-lg shadow-md"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  );
+				<div className="space-y-2">
+					<p className="text-sm font-medium text-gray-900 dark:text-white">
+						Performance
+					</p>
+					<p>Debounced search with instant filtering UX</p>
+					<p>Efficient state management with Redux Toolkit</p>
+				</div>
+
+				<div className="space-y-2">
+					<p className="text-sm font-medium text-gray-900 dark:text-white">
+						Business Logic
+					</p>
+					<p>Sales & profit analytics dashboard</p>
+					<p>Advanced filtering + reporting system</p>
+				</div>
+
+				<div className="space-y-2">
+					<p className="text-sm font-medium text-gray-900 dark:text-white">
+						Platform
+					</p>
+					<p>Multilingual support (i18n)</p>
+					<p>Secure media storage via Google Cloud Storage</p>
+				</div>
+			</div>
+
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+				<img
+					src="/elie-al-aaraj-portfolio/images/customer_search.png"
+					alt="Customer search"
+					className="
+          project-image
+          rounded-xl
+          border border-gray-200/40 dark:border-white/10
+          hover:scale-[1.02]
+          transition duration-300
+        "
+				/>
+
+				<img
+					src="/elie-al-aaraj-portfolio/images/address_card.png"
+					alt="Address management"
+					className="
+          project-image
+          rounded-xl
+          border border-gray-200/40 dark:border-white/10
+          hover:scale-[1.02]
+          transition duration-300
+        "
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default AlloGaz;

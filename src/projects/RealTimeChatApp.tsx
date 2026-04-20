@@ -3,21 +3,24 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { FaReact } from "react-icons/fa";
-import { SiRedux, SiTypescript, SiTailwindcss } from "react-icons/si";
-import { MdAnimation } from "react-icons/md";
-import { BsSearch } from "react-icons/bs";
+import { FaReact, FaNodeJs } from "react-icons/fa";
+import {
+	SiNestjs,
+	SiMongodb,
+	SiSocketdotio,
+	SiTypescript,
+} from "react-icons/si";
 
 import TechStackIcon from "../components/TechStackIcon";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MovieBrowser: React.FC = () => {
+const RealtimeChatApp: React.FC = () => {
 	const cardRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
 		const ctx = gsap.context((self) => {
-			// Main card entrance
+			// Card entrance
 			gsap.from(cardRef.current, {
 				opacity: 0,
 				y: 60,
@@ -30,22 +33,20 @@ const MovieBrowser: React.FC = () => {
 			});
 
 			// Tech stack icons
-			self.selector!(".tech-badge").forEach(
-				(el: HTMLElement, index: number) => {
-					gsap.from(el, {
-						opacity: 0,
-						x: -40,
-						duration: 0.6,
-						delay: index * 0.1,
-						scrollTrigger: {
-							trigger: el,
-							start: "top 85%",
-						},
-					});
-				},
-			);
+			self.selector!(".tech-badge").forEach((el: HTMLElement, i: number) => {
+				gsap.from(el, {
+					opacity: 0,
+					x: -40,
+					duration: 0.6,
+					delay: i * 0.1,
+					scrollTrigger: {
+						trigger: el,
+						start: "top 85%",
+					},
+				});
+			});
 
-			// Feature list items
+			// Features
 			self.selector!(".project-feature").forEach(
 				(el: HTMLElement, i: number) => {
 					gsap.from(el, {
@@ -62,23 +63,21 @@ const MovieBrowser: React.FC = () => {
 			);
 
 			// Images
-			self.selector!(".project-image").forEach(
-				(el: HTMLElement, index: number) => {
-					gsap.from(el, {
-						opacity: 0,
-						scale: 0.9,
-						duration: 0.9,
-						delay: index * 0.2,
-						ease: "back.out(1.7)",
-						scrollTrigger: {
-							trigger: el,
-							start: "top 85%",
-						},
-					});
-				},
-			);
+			self.selector!(".project-image").forEach((el: HTMLElement, i: number) => {
+				gsap.from(el, {
+					opacity: 0,
+					scale: 0.9,
+					duration: 0.9,
+					delay: i * 0.2,
+					ease: "back.out(1.7)",
+					scrollTrigger: {
+						trigger: el,
+						start: "top 85%",
+					},
+				});
+			});
 
-			// CTAs
+			// CTA
 			self.selector!(".project-link").forEach((el: HTMLElement) => {
 				gsap.from(el, {
 					opacity: 0,
@@ -111,12 +110,12 @@ const MovieBrowser: React.FC = () => {
 		>
 			<div className="mb-8">
 				<h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
-					Movie Browser
+					Real-Time Chat System - Still work in progress
 				</h3>
 
 				<p className="mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-					A fast and fluid movie discovery experience powered by real-time
-					search and smooth UI transitions.
+					Secure real-time messaging platform built with WebSockets and
+					end-to-end encryption for private communication.
 				</p>
 			</div>
 
@@ -125,83 +124,59 @@ const MovieBrowser: React.FC = () => {
 					<FaReact /> React
 				</TechStackIcon>
 				<TechStackIcon>
+					<SiNestjs /> NestJS
+				</TechStackIcon>
+				<TechStackIcon>
+					<FaNodeJs /> Node.js
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiSocketdotio /> Socket.IO
+				</TechStackIcon>
+				<TechStackIcon>
+					<SiMongodb /> MongoDB
+				</TechStackIcon>
+				<TechStackIcon>
 					<SiTypescript /> TypeScript
-				</TechStackIcon>
-				<TechStackIcon>
-					<SiRedux /> Redux
-				</TechStackIcon>
-				<TechStackIcon>
-					<SiTailwindcss /> Tailwind
-				</TechStackIcon>
-				<TechStackIcon>
-					<MdAnimation /> GSAP
-				</TechStackIcon>
-				<TechStackIcon>
-					<BsSearch /> Smart Search
 				</TechStackIcon>
 			</div>
 
 			<div className="grid md:grid-cols-2 gap-6 mb-10 text-gray-600 dark:text-gray-400">
 				<div className="space-y-2">
 					<p className="text-sm font-medium text-gray-900 dark:text-white">
-						Search Experience
+						Real-Time Architecture
 					</p>
-					<p>Instant movie discovery with debounced search input</p>
-					<p>Optimized API calls for smooth real-time filtering</p>
+					<p>WebSocket-based messaging via Socket.IO</p>
+					<p>Instant message sync across connected clients</p>
 				</div>
 
 				<div className="space-y-2">
 					<p className="text-sm font-medium text-gray-900 dark:text-white">
-						UI & Motion
+						Security Layer
 					</p>
-					<p>GSAP-powered transitions for fluid browsing feel</p>
-					<p>Animated page interactions for immersive UX</p>
+					<p>End-to-end encryption for private messages</p>
+					<p>Secure authentication flow with email-based login</p>
 				</div>
 
 				<div className="space-y-2">
 					<p className="text-sm font-medium text-gray-900 dark:text-white">
-						Data Experience
+						Message System
 					</p>
-					<p>Dynamic movie details page with enriched content</p>
-					<p>Structured API integration (OMDb)</p>
+					<p>Edit & delete messages in real time</p>
+					<p>Threaded replies with automatic scroll tracking</p>
 				</div>
 
 				<div className="space-y-2">
 					<p className="text-sm font-medium text-gray-900 dark:text-white">
-						Frontend Architecture
+						Data Layer
 					</p>
-					<p>Predictable state management with Redux Toolkit</p>
-					<p>Responsive UI built with TailwindCSS</p>
+					<p>MongoDB with Mongoose schema modeling</p>
+					<p>Optimized persistence for chat history</p>
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-				<img
-					src="/elie-al-aaraj-portfolio/images/movie_search.png"
-					alt="Movie search interface"
-					className="
-          project-image rounded-xl
-          border border-gray-200/40 dark:border-white/10
-          hover:scale-[1.02]
-          transition duration-300
-        "
-				/>
-
-				<img
-					src="/elie-al-aaraj-portfolio/images/movie_details.png"
-					alt="Movie details view"
-					className="
-          project-image rounded-xl
-          border border-gray-200/40 dark:border-white/10
-          hover:scale-[1.02]
-          transition duration-300
-        "
-				/>
-			</div>
-
-			<div className="flex flex-col items-center gap-4">
+			<div className="flex justify-center">
 				<a
-					href="https://elie-50.github.io/movie-browser/"
+					href="https://github.com/Elie-50/realtime-chat-app"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="
@@ -213,20 +188,11 @@ const MovieBrowser: React.FC = () => {
           transition
         "
 				>
-					Live Demo
-				</a>
-
-				<a
-					href="https://github.com/Elie-50/movie-browser"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition"
-				>
-					View Source Code →
+					View Repository
 				</a>
 			</div>
 		</div>
 	);
 };
 
-export default MovieBrowser;
+export default RealtimeChatApp;
