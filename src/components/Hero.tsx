@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
 	const heroRef = useRef<HTMLDivElement>(null);
@@ -62,12 +63,12 @@ const Hero: React.FC = () => {
 
 				{/* CTA */}
 				<div className="mt-10 flex justify-center gap-4 flex-wrap">
-					<a
-						href="/about-projects"
+					<Link
+						to="/about-projects"
 						className="hero-cta px-6 py-3 rounded-full bg-black text-white dark:bg-white dark:text-black transition hover:scale-[1.04]"
 					>
 						View Work
-					</a>
+					</Link>
 
 					<a
 						href="/elie-al-aaraj-portfolio/resume/Elie Al Aaraj CV.pdf"
